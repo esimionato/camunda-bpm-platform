@@ -47,6 +47,7 @@ public class TelemetryReporter {
   protected Data data;
   protected Connector<? extends ConnectorRequest<?>> httpConnector;
   protected TelemetryRegistry telemetryRegistry;
+  protected int telemetryRequestTimeout;
 
   public TelemetryReporter(CommandExecutor commandExecutor,
                            String telemetryEndpoint,
@@ -54,7 +55,8 @@ public class TelemetryReporter {
                            long telemetryReportingPeriod,
                            Data data,
                            Connector<? extends ConnectorRequest<?>> httpConnector,
-                           TelemetryRegistry telemetryRegistry) {
+                           TelemetryRegistry telemetryRegistry,
+                           int telemetryRequestTimeout) {
     this.commandExecutor = commandExecutor;
     this.telemetryEndpoint = telemetryEndpoint;
     this.telemetryRequestRetries = telemetryRequestRetries;
@@ -62,6 +64,7 @@ public class TelemetryReporter {
     this.data = data;
     this.httpConnector = httpConnector;
     this.telemetryRegistry = telemetryRegistry;
+    this.telemetryRequestTimeout = telemetryRequestTimeout;
     initTelemetrySendingTask();
   }
 
@@ -71,7 +74,8 @@ public class TelemetryReporter {
                                                     telemetryRequestRetries,
                                                     data,
                                                     httpConnector,
-                                                    telemetryRegistry);
+                                                    telemetryRegistry,
+                                                    telemetryRequestTimeout);
   }
 
   public synchronized void start() {

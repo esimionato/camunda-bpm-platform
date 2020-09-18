@@ -182,7 +182,8 @@ public class TelemetryReporterSuiteElement {
                                                                 1000,
                                                                 data,
                                                                 configuration.getTelemetryHttpConnector(),
-                                                                configuration.getTelemetryRegistry());
+                                                                configuration.getTelemetryRegistry(),
+                                                                configuration.getTelemetryRequestTimeout());
 
     // when
     telemetryReporter.reportNow();
@@ -551,7 +552,8 @@ public class TelemetryReporterSuiteElement {
                                                                 1000,
                                                                 data,
                                                                 null,
-                                                                configuration.getTelemetryRegistry());
+                                                                configuration.getTelemetryRegistry(),
+                                                                configuration.getTelemetryRequestTimeout());
 
     // when
     telemetryReporter.reportNow();

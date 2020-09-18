@@ -150,7 +150,8 @@ public class TelemetryTaskWorkerMetricsSuiteElement {
                           1000,
                           data,
                           configuration.getTelemetryHttpConnector(),
-                          configuration.getTelemetryRegistry()).reportNow();
+                          configuration.getTelemetryRegistry(),
+                          configuration.getTelemetryRequestTimeout()).reportNow();
 
     // then
     verify(postRequestedFor(urlEqualTo(TELEMETRY_ENDPOINT_PATH))
